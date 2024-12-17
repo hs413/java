@@ -19,3 +19,5 @@ String s = "aa"; // 좋음
 - 박싱타입 보다는 기본 타입을 사용하는 것을 권장한다.
 
 ## [객체 참조](./docs/Reference.md)
+
+## [자원 해제](./docs/Resources-close.md)
