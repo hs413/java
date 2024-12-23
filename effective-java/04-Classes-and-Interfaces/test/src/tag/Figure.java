@@ -1,35 +1,33 @@
 package tag;
 
-public class Figure {
-    enum Shape { RECTANGLE, CIRCLE };
+abstract class Figure {
+    abstract double area();
+}
 
-    final Shape shape;
+class Circle extends Figure {
+    final double radius;
 
-    double length;
-    double width;
-
-    double radius;
-
-    Figure(double radius){
-        shape = Shape.CIRCLE;
+    Circle(double radius) {
         this.radius = radius;
     }
 
-    Figure(double length, double width){
-        shape = Shape.RECTANGLE;
+    @Override
+    double area() {
+        return Math.PI * (radius * radius);
+    }
+}
+
+class Rectangle extends Figure {
+    final double length;
+    final double width;
+
+    Rectangle(double length, double width) {
         this.length = length;
         this.width = width;
     }
 
-    double area(){
-        switch(shape){
-            case RECTANGLE:
-                return length * width;
-            case CIRCLE:
-                return Math.PI * (radius * radius);
-            default:
-                throw new AssertionError(shape);
-        }
+    @Override double area() {
+        return length * width;
     }
-
 }
+
