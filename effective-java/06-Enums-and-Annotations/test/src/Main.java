@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 //        planetTest(11);
-        operationTest();
+//        operationTest();
+        payrollTest();
     }
 
     public static void planetTest(double mass) {
@@ -27,5 +28,11 @@ public class Main {
 
         Operation op = Operation.fromString("+").get();
         System.out.println(op.apply(a, b));
+    }
+
+    public static void payrollTest() {
+        System.out.println(PayrollDay.Monday.pay(480, 2));
+        System.out.println(PayrollDay.Monday.pay(960, 2));
+        System.out.println(PayrollDay.Sunday.pay(480, 2));
     }
 }
