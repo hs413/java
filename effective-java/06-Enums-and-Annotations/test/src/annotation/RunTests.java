@@ -16,16 +16,22 @@ public class RunTests {
 
                 try {
                     m.invoke(null);
-                    passed++;
+                    System.out.printf("테스트 %s 실패 예뢰를 던지지 않음%N", m);
                 } catch (InvocationTargetException e) {
                     Throwable t = e.getCause();
-                    Class<? extends Throwable> excType = m.getAnnotation(ExceptionTest.class).value();
+                    int oldPassed = passed;
+                    Class<? extends Throwable>[] excTypes =
+                            m.getAnnotation(ExceptionTest.class).value();
 
-                    if (excType.isInstance(t)) {
+                    for (Class<? extends Throwable> excType : excTypes) {
+                        if (excType.isInstance(t)) {
+                            passed++;
+                            break;
+                        }
+                    }
+                    if (passed == oldPassed) {
+                        System.out.printf("테스트 %s 실패 %s %n", m,  t);
                         passed++;
-                    } else {
-                        System.out.printf("테스트 %s 실패: 기대한 에외 %s, 발생한 예외 %s%n",
-                                m, excType.getName(), t);
                     }
                 } catch (Exception e) {
                     System.out.println("잘못 사용한 @Test: " + m);
