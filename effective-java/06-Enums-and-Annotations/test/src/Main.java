@@ -1,5 +1,8 @@
 //import Plant.LifeCycle;
+import extension.ExtendedOperation;
+import extension.Operation;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +17,8 @@ public class Main {
 //        planetTest(11);
 //        operationTest();
 //        payrollTest();
-        plantTest();
+//        plantTest();
+        operationTest2();
     }
 
     public static void planetTest(double mass) {
@@ -31,12 +35,12 @@ public class Main {
 
         double a = 1;
         double b = 2;
-        for (Operation operation : Operation.values()) {
+        /*for (Operation operation : Operation.values()) {
             System.out.printf("%f %s %f = %f%n", a, operation, b, operation.apply(a, b));
         }
 
         Operation op = Operation.fromString("+").get();
-        System.out.println(op.apply(a, b));
+        System.out.println(op.apply(a, b));*/
     }
 
     public static void payrollTest() {
@@ -66,5 +70,28 @@ public class Main {
 
         System.out.println(plantsByLifeCycle);
 
+    }
+
+    public static void operationTest2() {
+        double x = 4;
+        double y = 2;
+        test(ExtendedOperation.class, x, y);
+        test(Arrays.asList(ExtendedOperation.values()), x, y);
+    }
+
+    private static <T extends Enum<T> & Operation> void test(
+            Class<T> opEnumType, double x, double y) {
+
+        for (Operation op : opEnumType.getEnumConstants()) {
+            System.out.printf("%f %s %f = %f%n",
+                    x, op, y, op.apply(x, y));
+        }
+    }
+
+    private static void test(Collection<? extends Operation> opSet, double x, double y) {
+        for (Operation op : opSet) {
+            System.out.printf("%f %s %f = %f%n",
+                    x, op, y, op.apply(x, y));
+        }
     }
 }
