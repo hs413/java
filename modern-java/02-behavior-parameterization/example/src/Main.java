@@ -89,6 +89,6 @@ public class Main {
 
 //        System.out.println(greenApples);
 
-        List<Apple> result = filterApples(apples, new AppleGreenColorPredicate());
+        List<Apple> result = filterApples(apples, (Apple apple) -> apple.getWeight() > 150);
     }
 }
