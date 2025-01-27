@@ -4,8 +4,12 @@ import java.util.List;
 public class Main {
     enum Color { RED, GREEN }
 
-    class Apple {
+    static class Apple {
         private Color color;
+
+        public Apple(Color color) {
+            this.color = color;
+        }
 
         public Color getColor() {
             return color;
@@ -23,7 +27,21 @@ public class Main {
         return result;
     }
 
+    public static List<Apple> filterApplesByColor(List<Apple> apples, Color color) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : apples) {
+            if (apple.getColor().equals(color)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        List<Apple> apples = List.of(new Apple(Color.GREEN), new Apple(Color.RED));
+        List<Apple> greenApples = filterApplesByColor(apples, Color.GREEN);
+        List<Apple> redApples = filterApplesByColor(apples, Color.RED);
+
+        System.out.println(greenApples);
     }
 }
