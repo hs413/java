@@ -82,6 +82,20 @@ public class Main {
         return result;
     }
 
+    public interface Predicate<T> {
+        boolean test(T t);
+    }
+
+    public static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
+        List<T> result = new ArrayList<>();
+        for (T t : list) {
+            if (predicate.test(t)) {
+                result.add(t);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         List<Apple> apples = List.of(new Apple(Color.GREEN), new Apple(Color.RED));
 //        List<Apple> greenApples = filterApplesByColor(apples, Color.GREEN);
@@ -89,6 +103,11 @@ public class Main {
 
 //        System.out.println(greenApples);
 
-        List<Apple> result = filterApples(apples, (Apple apple) -> apple.getWeight() > 150);
+//        List<Apple> result = filterApples(apples, (Apple apple) -> apple.getWeight() > 150);
+
+        List<Apple> redApples = filter(apples, (Apple apple) -> apple.getWeight() > 150);
+
+        List<Integer> nums = List.of(1,2,3,4,5);
+        List<Integer> evenNumbers = filter(nums, (Integer i) -> i % 2 == 0);
     }
 }
