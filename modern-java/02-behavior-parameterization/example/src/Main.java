@@ -6,6 +6,7 @@ public class Main {
 
     static class Apple {
         private Color color;
+        private int weight;
 
         public Apple(Color color) {
             this.color = color;
@@ -13,6 +14,10 @@ public class Main {
 
         public Color getColor() {
             return color;
+        }
+
+        public int getWeight() {
+            return weight;
         }
     }
 
@@ -34,6 +39,18 @@ public class Main {
                 result.add(apple);
             }
         }
+        return result;
+    }
+
+    public static List<Apple> filterApples(List<Apple> apples, Color color, int weight, boolean flag) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : apples) {
+            if (flag && apple.getColor().equals(color) ||
+            !flag && apple.getWeight() > weight) {
+                result.add(apple);
+            }
+        }
+
         return result;
     }
 
