@@ -2,8 +2,8 @@ public class Main {
 
 
     public static void main(String[] args) {
-        PredicateExample predicateExample = new PredicateExample();
+//        PredicateExample.test();
+        ConsumerExample.test();
 
-        predicateExample.test();
     }
 }
