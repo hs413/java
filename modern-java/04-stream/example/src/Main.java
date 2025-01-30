@@ -7,6 +7,7 @@ public class Main {
 //        SliceExample.usePredicate();
 //        LimitExample.useLimit();
 //        LimitExample.useSkip();
-        MapExample.useFlatMap();
+//        MapExample.useFlatMap();
+        Example.test();
     }
 }
