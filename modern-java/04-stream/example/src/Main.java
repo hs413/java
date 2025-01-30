@@ -4,6 +4,9 @@ public class Main {
 //        Dish.test();
 //        FilterExample.useDistinct();
 //        FilterExample.usePredicate();
-        SliceExample.usePredicate();
+//        SliceExample.usePredicate();
+//        LimitExample.useLimit();
+//        LimitExample.useSkip();
+        MapExample.useFlatMap();
     }
 }
