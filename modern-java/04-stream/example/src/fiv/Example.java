@@ -1,3 +1,5 @@
+package fiv;
+
 import static java.util.Comparator.*;
 
 import fin.Trader;
@@ -5,7 +7,6 @@ import fin.Transaction;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class Example {
     public static void test() {
