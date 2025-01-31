@@ -1,4 +1,5 @@
 import fiv.Example;
+import six.SummarizationExample;
 
 public class Main {
 
@@ -10,6 +11,8 @@ public class Main {
 //        four.LimitExample.useLimit();
 //        four.LimitExample.useSkip();
 //        four.MapExample.useFlatMap();
-        Example.test();
+//        Example.test();
+        SummarizationExample.test();
+
     }
 }
