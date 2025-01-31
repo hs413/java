@@ -1,4 +1,5 @@
 import fiv.Example;
+import six.GroupExample;
 import six.SummarizationExample;
 
 public class Main {
@@ -12,7 +13,8 @@ public class Main {
 //        four.LimitExample.useSkip();
 //        four.MapExample.useFlatMap();
 //        Example.test();
-        SummarizationExample.test();
+//        SummarizationExample.test();
+        GroupExample.test();
 
     }
 }
