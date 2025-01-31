@@ -1,3 +1,5 @@
+package dish;
+
 import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;

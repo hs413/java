@@ -1,3 +1,6 @@
+package four;
+
+import dish.Dish;
 import java.util.List;
 import java.util.stream.Collectors;
 

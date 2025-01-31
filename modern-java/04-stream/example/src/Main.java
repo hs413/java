@@ -3,13 +3,13 @@ import fiv.Example;
 public class Main {
 
     public static void main(String[] args) {
-//        Dish.test();
-//        FilterExample.useDistinct();
-//        FilterExample.usePredicate();
-//        SliceExample.usePredicate();
-//        LimitExample.useLimit();
-//        LimitExample.useSkip();
-//        MapExample.useFlatMap();
+//        dish.Dish.test();
+//        four.FilterExample.useDistinct();
+//        four.FilterExample.usePredicate();
+//        four.SliceExample.usePredicate();
+//        four.LimitExample.useLimit();
+//        four.LimitExample.useSkip();
+//        four.MapExample.useFlatMap();
         Example.test();
     }
 }

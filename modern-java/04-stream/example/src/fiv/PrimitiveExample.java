@@ -1,5 +1,6 @@
 package fiv;
 
+import dish.Dish;
 import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
