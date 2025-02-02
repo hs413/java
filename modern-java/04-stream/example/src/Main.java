@@ -1,5 +1,6 @@
 import fiv.Example;
 import six.GroupExample;
+import six.PartitionExample;
 import six.SummarizationExample;
 
 public class Main {
@@ -14,7 +15,7 @@ public class Main {
 //        four.MapExample.useFlatMap();
 //        Example.test();
 //        SummarizationExample.test();
-        GroupExample.test();
-
+//        GroupExample.test();
+        PartitionExample.test();
     }
 }
