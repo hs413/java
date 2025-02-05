@@ -64,14 +64,76 @@ public class BasicExample {
         // replaceAll
         referenceCodes.replaceAll(code -> Character.toUpperCase(code.charAt(0)) + code.substring(1));
     }
-;
 
+    public static void mapTest() {
+        Map<String, Integer> ageOfFriends = Map.of("B", 12, "A", 13);
 
+        // map forEach
+        for(Map.Entry<String, Integer> entry : ageOfFriends.entrySet()) {
+            String friend = entry.getKey();
+            Integer age = entry.getValue();
+            System.out.println(friend + " is " + age + " years old");
+        }
 
+        ageOfFriends.forEach((key, value) -> System.out.println(key + " is " + value));
 
+        // map sort
+        Map<String, String> favouriteMovies = Map.ofEntries(
+                Map.entry("R", "S"),
+                Map.entry("C", "M"),
+                Map.entry("O", "J"));
 
+        favouriteMovies
+                .entrySet()
+                .stream()
+                .sorted(Entry.comparingByKey())
+                .forEachOrdered(System.out::println);
 
+        // getOrDefault
+        System.out.println(favouriteMovies.getOrDefault("R", "S"));
+        System.out.println(favouriteMovies.getOrDefault("T", "M"));
 
+        // computeIfAbsent 키가 없으면 맵에 추가, 있으면 기존 값을 반환
+        Map<String, List<String>> friendsToMovies = new HashMap<>();
+        String friend = "Raphael";
+        List<String> movies = friendsToMovies.get(friend);
+        if (movies == null) {
+            movies = new ArrayList<>();
+            friendsToMovies.put(friend, movies);
+        }
+
+        movies.add("S");
+        System.out.println(friendsToMovies);
+
+        friendsToMovies.computeIfAbsent(friend, k -> new ArrayList<>())
+                .add("S");
+        System.out.println(friendsToMovies);
+
+        Map<String, String> favouriteMovies2 = new HashMap<>();
+        favouriteMovies2.put("R", "S");
+        favouriteMovies2.put("T", "M");
+
+        // 키가 특정 값과 연관되었을 때만 제거
+        // favouriteMovies2.remove("R", "SS");
+        favouriteMovies2.remove("R", "S");
+        System.out.println(favouriteMovies2);
+
+        favouriteMovies2.replaceAll((f, movie) -> movie.toLowerCase());
+        System.out.println(favouriteMovies2);
+
+        Map<String, String> family = Map.of(
+                "Teo", "Star Wars",
+                "Cristina", "James Bond");
+
+        Map<String, String> friends = Map.of("Raphael", "Star Wars","Cristina", "Matrix");
+
+        Map<String, String> everyone = new HashMap<>(family);
+        everyone.putAll(friends);
+        System.out.println(everyone);
+
+        Map<String, String> everyone2 = new HashMap<>(family);
+        friends.forEach((k, v) -> everyone2.merge(k, v, (movie1, movie2) -> movie1 + " & " + movie2));
+        System.out.println(everyone2);
 
     }
 }
