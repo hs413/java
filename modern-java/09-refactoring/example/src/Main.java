@@ -1,7 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
+        // basicTest();
 
+        MethodRef.test();
+
+
+    }
+
+    public static void basicTest() {
         Runnable r1 = new Runnable() {
             public void run() {
                 System.out.println("hello");
@@ -25,7 +32,6 @@ public class Main {
                 System.out.println(a);
             }
         };
-
     }
 
 
