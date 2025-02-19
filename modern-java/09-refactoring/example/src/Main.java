@@ -1,3 +1,8 @@
+import dish.Dish;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -34,7 +39,20 @@ public class Main {
         };
     }
 
+    // 명령형 데이터 처리를 스트림으로
+    public static void test() {
+        List<String> dishNames = new ArrayList<>();
+        for(Dish dish: Dish.menu) {
+            if (dish.getcalories() > 300) {
+                dishNames.add(dish.getName());
+            }
+        }
 
+        Dish.menu.parallelStream()
+                .filter(dish -> dish.getcalories() > 300)
+                .map(Dish::getName)
+                .collect(Collectors.toList());
+    }
 }
 
 
