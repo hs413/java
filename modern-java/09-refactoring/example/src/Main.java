@@ -1,3 +1,4 @@
+import design.strategy.Validator;
 import dish.Dish;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
         // basicTest();
+        // MethodRef.test();
 
-        MethodRef.test();
-
+        Validator.test();
 
     }
 
