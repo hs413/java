@@ -1,4 +1,6 @@
 import design.strategy.Validator;
+import design.templatemethod.Customer;
+import design.templatemethod.OnlineBankingLambda;
 import dish.Dish;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Main {
 
         Validator.test();
 
+        new OnlineBankingLambda().processCustomer(13, (Customer c) -> System.out.println(c));
     }
 
     public static void basicTest() {
