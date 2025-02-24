@@ -5,16 +5,25 @@ import dish.Dish;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import observer.Feed;
+import observer.Guardian;
+import observer.LeMonde;
+import observer.NYTimes;
 
 public class Main {
 
     public static void main(String[] args) {
         // basicTest();
         // MethodRef.test();
+//        Validator.test();
+//        new OnlineBankingLambda().processCustomer(13, (Customer c) -> System.out.println(c));
 
-        Validator.test();
+        Feed f = new Feed();
+        f.registerObserver(new NYTimes());
+        f.registerObserver(new Guardian());
+        f.registerObserver(new LeMonde());
+        f.notifyObservers("Then queen");
 
-        new OnlineBankingLambda().processCustomer(13, (Customer c) -> System.out.println(c));
     }
 
     public static void basicTest() {
