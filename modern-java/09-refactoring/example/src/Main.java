@@ -18,12 +18,28 @@ public class Main {
 //        Validator.test();
 //        new OnlineBankingLambda().processCustomer(13, (Customer c) -> System.out.println(c));
 
-        Feed f = new Feed();
-        f.registerObserver(new NYTimes());
-        f.registerObserver(new Guardian());
-        f.registerObserver(new LeMonde());
-        f.notifyObservers("Then queen");
+        observerTest();
 
+    }
+
+    public static void observerTest() {
+        Feed f = new Feed();
+        // f.registerObserver(new NYTimes());
+        // f.registerObserver(new Guardian());
+        // f.registerObserver(new LeMonde());
+        // f.notifyObservers("Then queen");
+
+        f.registerObserver((String message) -> {
+            if (message != null && message.contains("money")) {
+                System.out.println("Breaking news in NY " + message);
+            }
+        });
+
+        f.registerObserver((String message) -> {
+            if (message != null && message.contains("queen")) {
+                System.out.println("Yet more new from in London " + message);
+            }
+        });
     }
 
     public static void basicTest() {
