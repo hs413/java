@@ -1,3 +1,5 @@
+import design.factory.Product;
+import design.factory.ProductFactory;
 import design.strategy.Validator;
 import design.templatemethod.Customer;
 import design.templatemethod.OnlineBankingLambda;
@@ -18,8 +20,13 @@ public class Main {
 //        Validator.test();
 //        new OnlineBankingLambda().processCustomer(13, (Customer c) -> System.out.println(c));
 
-        observerTest();
+//        observerTest();
 
+
+    }
+
+    public static void factoryTest() {
+        Product p = ProductFactory.createProduct("loan");
     }
 
     public static void observerTest() {
