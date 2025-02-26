@@ -22,11 +22,12 @@ public class Main {
 
 //        observerTest();
 
-
+        factoryTest();
     }
 
     public static void factoryTest() {
-        Product p = ProductFactory.createProduct("loan");
+//        Product p = ProductFactory.createProduct("loan");
+        Product p = ProductFactory.createProduct2("loan");
     }
 
     public static void observerTest() {
