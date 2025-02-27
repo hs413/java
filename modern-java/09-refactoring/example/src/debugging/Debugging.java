@@ -14,4 +14,29 @@ public class Debugging {
     public static int divideByZero(int a) {
         return a / 0;
     }
+
+
+    public static void printNumbers() {
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5);
+
+        // forEach를 호출하는 순간 전체 스트림이 소비된다
+        numbers.stream()
+                .map(x -> x + 17)
+                .filter(x -> x % 2 == 0)
+                .limit(3)
+                .forEach(System.out::println);
+
+
+
+        List<Integer> result = numbers.stream()
+                .peek(x -> System.out.println("from stream: " + x))
+                .map(x -> x + 17)
+                .peek(x -> System.out.println("after map: " + x))
+                .filter(x -> x % 2 == 0)
+                .peek(x -> System.out.println("after filter: " + x))
+                .limit(3)
+                .peek(x -> System.out.println("after limit: " + x))
+                .collect(java.util.stream.Collectors.toList());
+    }
+
 }
