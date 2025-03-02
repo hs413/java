@@ -1,3 +1,5 @@
+import java.util.Optional;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,20 +26,46 @@ public class Main {
 //        return "Unknown";
 
         // null 방지 방법2
-        if (person.getCar() == null) {
-            return "Unknown";
+//        if (person.getCar() == null) {
+//            return "Unknown";
+//        }
+//
+//        Car car = person.getCar();
+//        if (car == null) {
+//            return "Unknown";
+//        }
+//
+//        Insurance insurance = car.getInsurance();
+//        if (insurance == null) {
+//            return "Unknown";
+//        }
+//
+//        return insurance.getName();
+    }
+
+    public static void createOptional() {
+        // 빈 optional
+        Optional<Car> optCar = Optional.empty();
+
+        // null이 아닌 optional
+        Optional<Car> optCar2 = Optional.of(new Car());
+
+        // null값으로 optional: car가 null이면 빈 optional 객체 반환
+        Optional<Car> optCar3 = Optional.ofNullable(new Car());
+
+
+        // map으로 optional 값 추출하기
+        // optional 미사용
+        Insurance insurance = new Insurance();
+        String name = null;
+        if (insurance != null) {
+            name = insurance.getName();
         }
 
-        Car car = person.getCar();
-        if (car == null) {
-            return "Unknown";
-        }
+        // optional 사용
+        Optional<Insurance> optInsurance = Optional.ofNullable(insurance);
+        Optional<String> optName = optInsurance.map(Insurance::getName);
 
-        Insurance insurance = car.getInsurance();
-        if (insurance == null) {
-            return "Unknown";
-        }
 
-        return insurance.getName();
     }
 }

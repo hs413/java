@@ -1,7 +1,13 @@
-public class Car {
-    private Insurance insurance;
+import java.util.Optional;
 
-    public Insurance getInsurance() {
+public class Car {
+//    private Insurance insurance;
+//    public Insurance getInsurance() {
+//        return insurance;
+//    }
+
+    private Optional<Insurance> insurance;
+    public Optional<Insurance> getInsurance() {
         return insurance;
     }
 }
