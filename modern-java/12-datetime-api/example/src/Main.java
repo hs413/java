@@ -1,4 +1,5 @@
 import java.time.DayOfWeek;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -8,6 +9,11 @@ import java.time.temporal.ChronoField;
 public class Main {
 
     public static void main(String[] args) {
+//        testLocalDate();
+        testInstant();
+    }
+
+    private static void testLocalDate() {
         LocalDate date = LocalDate.of(2025, 03, 02);
         int year = date.getYear();
         Month month = date.getMonth();
@@ -67,6 +73,20 @@ public class Main {
         System.out.println("dt3: " + dt3);
         System.out.println("dt4: " + dt4);
         System.out.println("dt5: " + dt5);
+        System.out.println("--------------------------------");
+    }
+
+    private static void testInstant() {
+        // Instant는 기계 전용
+        Instant instant1 = Instant.ofEpochSecond(3);
+        Instant instant2 = Instant.ofEpochSecond(3, 0);
+        Instant instant3 = Instant.ofEpochSecond(2, 1_000_000_000);
+        Instant instant4 = Instant.ofEpochSecond(4, -1_000_000_000);
+
+        System.out.println("instant1: " + instant1);
+        System.out.println("instant2: " + instant2);
+        System.out.println("instant3: " + instant3);
+        System.out.println("instant4: " + instant4);
         System.out.println("--------------------------------");
 
     }
