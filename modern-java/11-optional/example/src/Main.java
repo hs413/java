@@ -3,12 +3,12 @@ import java.util.Optional;
 public class Main {
 
     public static void main(String[] args) {
-        Person person = new Person();
+        Optional<Person> person = Optional.of(new Person());
         String a = getCarInsuranceName(person);
         System.out.println(a);
     }
 
-    public static String getCarInsuranceName(Person person) {
+    public static String getCarInsuranceName(Optional<Person> person) {
         // null 에러 발생
         // return person.getCar().getInsurance().getName();
 
@@ -41,6 +41,12 @@ public class Main {
 //        }
 //
 //        return insurance.getName();
+
+        // optional, flatmap 사용
+        return person.flatMap(Person::getCar)
+                .flatMap(Car::getInsurance)
+                .map(Insurance::getName)
+                .orElse("Unknown");
     }
 
     public static void createOptional() {
