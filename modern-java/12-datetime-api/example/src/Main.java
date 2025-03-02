@@ -1,16 +1,20 @@
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.Period;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 
 public class Main {
 
     public static void main(String[] args) {
 //        testLocalDate();
-        testInstant();
+//        testInstant();
+        testDuration();
     }
 
     private static void testLocalDate() {
@@ -88,6 +92,42 @@ public class Main {
         System.out.println("instant3: " + instant3);
         System.out.println("instant4: " + instant4);
         System.out.println("--------------------------------");
+
+    }
+
+    private static void testDuration() {
+        LocalTime time1 = LocalTime.of(14, 20, 10);
+        LocalTime time2 = LocalTime.of(15, 20, 10);
+        Duration d1 = Duration.between(time1, time2);
+        System.out.println("d1: " + d1);
+
+        LocalDateTime dateTime1 = LocalDateTime.of(2025, Month.SEPTEMBER, 02, 14, 20, 10);
+        LocalDateTime dateTime2 = LocalDateTime.of(2025, Month.SEPTEMBER, 02, 15, 20, 10);
+        Duration d2 = Duration.between(dateTime1, dateTime2);
+        System.out.println("d2: " + d2);
+
+        Instant instant1 = Instant.ofEpochSecond(3);
+        Instant instant2 = Instant.ofEpochSecond(4);
+        Duration d3 = Duration.between(instant1, instant2);
+        System.out.println("d3: " + d3);
+
+        Period tenDays = Period.between(LocalDate.of(2025, 3,02),
+                LocalDate.of(2025, 3,12));
+
+        System.out.println(tenDays);
+
+
+        Duration threeMinutes = Duration.ofMinutes(3);
+        System.out.println(threeMinutes);
+        Duration threeMinutes2 = Duration.of(3, ChronoUnit.MINUTES);
+        System.out.println(threeMinutes2);
+
+        Period tenDays2 = Period.ofDays(10);
+        Period threeWeeks = Period.ofWeeks(3);
+        Period twoYearsSixMonthsOneDay = Period.of(2, 6, 1);
+        System.out.println(tenDays2);
+        System.out.println(threeWeeks);
+        System.out.println(twoYearsSixMonthsOneDay);
 
     }
 }
