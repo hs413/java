@@ -6,15 +6,20 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 
 public class Main {
 
     public static void main(String[] args) {
 //        testLocalDate();
 //        testInstant();
-        testDuration();
+//        testDuration();
+//        testModifyLocalDate();
+        testFormatAndParse();
     }
 
     private static void testLocalDate() {
@@ -128,6 +133,70 @@ public class Main {
         System.out.println(tenDays2);
         System.out.println(threeWeeks);
         System.out.println(twoYearsSixMonthsOneDay);
+
+    }
+
+    private static void testModifyLocalDate() {
+
+        // 절대적 방식으로 LocalDate 속성 변경
+        LocalDate date1 = LocalDate.of(2023, 9, 21);
+        LocalDate date2 = date1.withYear(2021);
+        LocalDate date3 = date2.withDayOfMonth(25);
+        LocalDate date4 = date3.with(ChronoField.MONTH_OF_YEAR, 2);
+
+        System.out.println("date1: " + date1);
+        System.out.println("date2: " + date2);
+        System.out.println("date3: " + date3);
+        System.out.println("date4: " + date4);
+        System.out.println("--------------------------------");
+
+        // 상대적 방식으로 LocalDate 속성 변경
+        LocalDate date11 = LocalDate.of(2023, 9, 21);
+        LocalDate date21 = date11.plusWeeks(1);
+        LocalDate date31 = date21.minusYears(1);
+        LocalDate date41 = date31.plus(6, ChronoUnit.MONTHS);
+
+        System.out.println("date11: " + date11);
+        System.out.println("date22: " + date21);
+        System.out.println("date31: " + date31);
+        System.out.println("date41: " + date41);
+    }
+
+    private static void testFormatAndParse() {
+        LocalDate date = LocalDate.of(2025, 03, 02);
+        String s1 = date.format(DateTimeFormatter.BASIC_ISO_DATE);
+        String s2 = date.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+        System.out.println("BASIC ISO DATE: "+ s1);
+        System.out.println("ISO LOCAL DATE: "+ s2);
+        System.out.println("----------------------");
+
+        LocalDate date1 = LocalDate.parse("20250302", DateTimeFormatter.BASIC_ISO_DATE);
+        LocalDate date2 = LocalDate.parse("2025-03-02", DateTimeFormatter.ISO_LOCAL_DATE);
+
+        System.out.println("date1: " + date1);
+        System.out.println("date2: " + date2);
+        System.out.println("----------------------");
+
+        DateTimeFormatter italianFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ITALIAN);
+        LocalDate date3 = LocalDate.of(2025, 3, 18);
+        String formattedDate = date3.format(italianFormatter);
+        LocalDate date4 = LocalDate.parse(formattedDate, italianFormatter);
+        System.out.println("date3: " + date3);
+        System.out.println("formattedDate: " + formattedDate);
+        System.out.println("date4: " + date4);
+        System.out.println("----------------------");
+
+        DateTimeFormatter italianFormatter2 = new DateTimeFormatterBuilder()
+                .appendText(ChronoField.DAY_OF_MONTH)
+                .appendLiteral(". ")
+                .appendText(ChronoField.MONTH_OF_YEAR)
+                .appendLiteral(" ")
+                .appendText(ChronoField.YEAR)
+                .parseCaseInsensitive()
+                .toFormatter(Locale.ITALIAN);
+
+        System.out.println("italianFormatter2: " + italianFormatter2);
 
     }
 }
