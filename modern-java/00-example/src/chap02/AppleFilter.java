@@ -12,9 +12,11 @@ public class AppleFilter {
                 new Apple(Color.GREEN),
                 new Apple(Color.RED));
 
-        List<Apple> filtered = filteringGreenApples(inventory);
+        List<Apple> greenApples = filteringGreenApples(inventory, Color.GREEN);
+        List<Apple> redApples = filteringGreenApples(inventory, Color.RED);
 
-        filtered.forEach(System.out::println);
+        greenApples.forEach(System.out::println);
+        redApples.forEach(System.out::println);
     }
 
     enum Color {
@@ -22,11 +24,11 @@ public class AppleFilter {
         GREEN
     }
 
-    public static List<Apple> filteringGreenApples(List<Apple> inventory) {
+    public static List<Apple> filteringGreenApples(List<Apple> inventory, Color color) {
         List<Apple> result = new ArrayList<>();
 
         for (Apple apple : inventory) {
-            if (Color.GREEN.equals(apple.getColor()))
+            if (apple.getColor().equals(color))
                 result.add(apple);
         }
 
