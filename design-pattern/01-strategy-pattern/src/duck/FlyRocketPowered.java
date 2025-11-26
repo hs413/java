@@ -1,6 +1,8 @@
+package duck;
+
 public class FlyRocketPowered implements FlyBehavior {
     public void fly() {
-        System.out.println("FlyRocketPowered");
+        System.out.println("duck.FlyRocketPowered");
     }
 
 }

@@ -1,3 +1,5 @@
+package duck;
+
 public class MallardDuck extends Duck {
     public MallardDuck() {
         quackBehavior = new Quack();
@@ -5,6 +7,6 @@ public class MallardDuck extends Duck {
     }
 
     public void display() {
-        System.out.println("I'm a Mallard Duck");
+        System.out.println("I'm a Mallard duck.Duck");
     }
 }

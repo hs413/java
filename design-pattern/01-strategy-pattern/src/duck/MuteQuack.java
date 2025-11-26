@@ -1,3 +1,5 @@
+package duck;
+
 public class MuteQuack implements QuackBehavior {
 
     @Override
