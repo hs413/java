@@ -1,38 +1,37 @@
 package pizza;
 
-public class Pizza {
+import java.util.ArrayList;
+import java.util.List;
 
-    public Pizza orderPizza(String type) {
-        Pizza pizza = new Pizza();
-
-
-        if(type.equals("cheese")) {
-            pizza = new CheesePizza();
-        } else if (type.equals("pepperoni")) {
-            pizza = new GreekPizza();
-        }
-
-
-        pizza.prepare();
-        pizza.bake();
-        pizza.cut();
-        pizza.box();
-        return pizza;
-    }
-
-
+public abstract class Pizza {
+    protected String name;
+    protected String dough;
+    protected String sauce;
+    protected List<String> toppings = new ArrayList<>();
 
 
     public void prepare() {
+        System.out.println("Preparing " + name);
+        System.out.println("dough: " + dough);
 
+        for(String topping : toppings) {
+            System.out.println(topping);
+        }
     }
 
     public void bake() {
-
+        System.out.println("baking");
     }
 
     public void cut() {
+        System.out.println("cutting");
     }
 
-    public void box() {}
+    public void box() {
+        System.out.println("boxing");
+    }
+
+    public String getName() {
+        return name;
+    }
 }
