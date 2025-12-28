@@ -1,4 +1,4 @@
-public class MenuItem {
+public class MenuItem extends MenuComponent {
     String name;
     String description;
     boolean vegetarian;
@@ -27,4 +27,12 @@ public class MenuItem {
         return price;
     }
 
+    public void print() {
+        System.out.println(" " + getName());
+        if (isVegetarian()) {
+            System.out.println(" Vegetarian");
+        }
+        System.out.println(", " + getPrice());
+        System.out.println("    --" + getDescription());
+    }
 }
